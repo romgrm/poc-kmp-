@@ -1,29 +1,30 @@
+package Features.MultiThreading.UI
 
 import Features.Battery.BatteryLevelScreen
-import Features.MultiThreading.UI.MultiThreadingScreen
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.ButtonElevation
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.unit.Dp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 
-class HomeScreen : Screen {
+class MultiThreadingScreen : Screen{
+    private val viewModel by viewModels<MuseumViewModel> {
+        Injection.provideViewModelFactory()
+    }
     @Composable
     override fun Content() = Scaffold {
-        val nav = LocalNavigator.currentOrThrow
         Column() {
             Button(
-                onClick = { nav.push(BatteryLevelScreen()) }
+                elevation = ButtonDefaults.elevation(defaultElevation= Dp(8f)),
+                onClick = {  }
             ) {
-                Text("Home Screen")
-            }
-            Button(
-                onClick = { nav.push(MultiThreadingScreen()) }
-            ) {
-                Text("MultiThreading Screen")
+                Text("Get data")
             }
         }
     }

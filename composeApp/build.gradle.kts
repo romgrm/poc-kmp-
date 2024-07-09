@@ -32,13 +32,19 @@ kotlin {
         
         androidMain.dependencies {
             implementation(compose.preview)
+            val lifecycle_version = "2.2.0"
 
+            // viewmodel
+            implementation ("androidx.navigation:navigation-fragment-ktx:$lifecycle_version")
+//            implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
             implementation(libs.androidx.activity.compose)
             implementation(libs.koin.android)
             implementation(libs.koin.androidx.compose)
         }
         commonMain.dependencies {
             val voyagerVersion = "1.1.0-beta02"
+            val ktorVersion = "2.3.11"
+
 
             implementation(compose.runtime)
             implementation(compose.foundation)
@@ -47,14 +53,15 @@ kotlin {
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             implementation("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")
-
+            implementation("io.ktor:ktor-client-core:$ktorVersion")
+            implementation("io.ktor:ktor-client-cio:$ktorVersion")
+            implementation("io.ktor:ktor-client-logging:$ktorVersion")
             //DI
             api(libs.koin.core)
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
-            implementation(libs.lifecycle.viewmodel)
-
-
+//            implementation(libs.lifecycle.viewmodel)
+//            implementation(libs.lifecycle.livedata)
         }
     }
 }
