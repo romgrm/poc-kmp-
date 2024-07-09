@@ -1,6 +1,7 @@
 package Features.MultiThreading.UI
 
 import Features.Battery.BatteryLevelScreen
+import Features.MultiThreading.Usecases.multithreadingData
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
@@ -14,17 +15,15 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 
 class MultiThreadingScreen : Screen{
-    private val viewModel by viewModels<MuseumViewModel> {
-        Injection.provideViewModelFactory()
-    }
+
     @Composable
     override fun Content() = Scaffold {
         Column() {
             Button(
                 elevation = ButtonDefaults.elevation(defaultElevation= Dp(8f)),
-                onClick = {  }
+                onClick = { multithreadingData. }
             ) {
-                Text("Get data")
+                Text("get Post")
             }
         }
     }

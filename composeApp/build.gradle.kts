@@ -32,14 +32,13 @@ kotlin {
         
         androidMain.dependencies {
             implementation(compose.preview)
-            val lifecycle_version = "2.2.0"
-
-            // viewmodel
-            implementation ("androidx.navigation:navigation-fragment-ktx:$lifecycle_version")
-//            implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
+            implementation("androidx.lifecycle:lifecycle-livedata-core-ktx:2.8.3")
             implementation(libs.androidx.activity.compose)
             implementation(libs.koin.android)
             implementation(libs.koin.androidx.compose)
+            implementation("com.squareup.retrofit2:retrofit:2.9.0")
+            implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+            implementation("androidx.compose.runtime:runtime-livedata:1.5.4")
         }
         commonMain.dependencies {
             val voyagerVersion = "1.1.0-beta02"
