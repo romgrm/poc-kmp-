@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 kotlin {
@@ -32,13 +33,15 @@ kotlin {
         
         androidMain.dependencies {
             implementation(compose.preview)
-            implementation("androidx.lifecycle:lifecycle-livedata-core-ktx:2.8.3")
             implementation(libs.androidx.activity.compose)
             implementation(libs.koin.android)
             implementation(libs.koin.androidx.compose)
-            implementation("com.squareup.retrofit2:retrofit:2.9.0")
-            implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-            implementation("androidx.compose.runtime:runtime-livedata:1.5.4")
+            implementation(libs.ktor.client.okhttp)
+            implementation("androidx.fragment:fragment-ktx:1.6.2")
+            implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.3")
+            implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0") // Adjust version as needed
+            implementation("androidx.activity:activity-ktx:1.4.0") // For Activity KTX extensions
+            implementation("org.koin:koin-androidx-viewmodel:3.2.2") // Koin's ViewModel extension
         }
         commonMain.dependencies {
             val voyagerVersion = "1.1.0-beta02"
@@ -52,14 +55,14 @@ kotlin {
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             implementation("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")
-            implementation("io.ktor:ktor-client-core:$ktorVersion")
-            implementation("io.ktor:ktor-client-cio:$ktorVersion")
-            implementation("io.ktor:ktor-client-logging:$ktorVersion")
+            implementation(libs.bundles.ktor)
+
+
             //DI
             api(libs.koin.core)
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
-//            implementation(libs.lifecycle.viewmodel)
+            implementation(libs.lifecycle.viewmodel)
 //            implementation(libs.lifecycle.livedata)
         }
     }

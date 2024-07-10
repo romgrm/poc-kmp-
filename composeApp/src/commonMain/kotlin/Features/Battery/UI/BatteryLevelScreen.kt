@@ -22,7 +22,6 @@ class BatteryLevelScreen : Screen {
                 onClick = { nav.pop() }
             ) {
                 Text("Features.Battery Screen")
-
             }
         }
     }
