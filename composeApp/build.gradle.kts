@@ -36,12 +36,6 @@ kotlin {
             implementation(libs.androidx.activity.compose)
             implementation(libs.koin.android)
             implementation(libs.koin.androidx.compose)
-            implementation(libs.ktor.client.okhttp)
-            implementation("androidx.fragment:fragment-ktx:1.6.2")
-            implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.3")
-            implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0") // Adjust version as needed
-            implementation("androidx.activity:activity-ktx:1.4.0") // For Activity KTX extensions
-            implementation("org.koin:koin-androidx-viewmodel:3.2.2") // Koin's ViewModel extension
         }
         commonMain.dependencies {
             val voyagerVersion = "1.1.0-beta02"
@@ -56,7 +50,6 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")
             implementation(libs.bundles.ktor)
-
 
             //DI
             api(libs.koin.core)

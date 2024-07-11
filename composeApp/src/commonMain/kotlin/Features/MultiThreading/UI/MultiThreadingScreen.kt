@@ -28,20 +28,29 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
+import createHttpClient
+import io.ktor.client.HttpClient
 import org.jetbrains.compose.resources.painterResource
 
 import kotlinx.coroutines.launch
 import util.NetworkError
 import util.onError
 import util.onSuccess
-class MultiThreadingScreen : Screen {
-
+class MultiThreadingScreen(client: InsultCensorClient) : Screen {
+    private var censorClient = InsultCensorClient(createHttpClient(okHttp))
     @Composable
     @Preview
     override fun Content() = MaterialTheme {
-        val client = viewModel<InsultCensorClient>()
-
+//        val client = viewModel<InsultCensorClient>(factory = object : ViewModelProvider.Factory {
+//            fun <T : ViewModel> create(modelClass : Class<T>): T {
+//                return InsultCensorClient (
+//                    createHttpClient(OkHttp.create())
+//                ) as T
+//            }
+//        })
         var censoredText by remember {
             mutableStateOf<String?>(null)
         }
@@ -77,7 +86,7 @@ class MultiThreadingScreen : Screen {
                     isLoading = true
                     errorMessage = null
 
-                    client.censorWords(uncensoredText)
+                    censorClient.censorWords(uncensoredText)
                         .onSuccess {
                             censoredText = it
                         }
