@@ -40,7 +40,7 @@ import util.NetworkError
 import util.onError
 import util.onSuccess
 class MultiThreadingScreen(client: InsultCensorClient) : Screen {
-    private var censorClient = InsultCensorClient(createHttpClient(okHttp))
+    private var censorClient = client
     @Composable
     @Preview
     override fun Content() = MaterialTheme {

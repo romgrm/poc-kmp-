@@ -36,6 +36,8 @@ kotlin {
             implementation(libs.androidx.activity.compose)
             implementation(libs.koin.android)
             implementation(libs.koin.androidx.compose)
+            implementation(libs.ktor.client.okhttp)
+
         }
         commonMain.dependencies {
             val voyagerVersion = "1.1.0-beta02"

@@ -1,6 +1,7 @@
 
 import Features.Battery.BatteryLevelScreen
 import Features.MultiThreading.UI.MultiThreadingScreen
+import Features.MultiThreading.networking.InsultCensorClient
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Button
 import androidx.compose.material.Scaffold
@@ -11,7 +12,8 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 
 
-class HomeScreen : Screen {
+class HomeScreen(client: InsultCensorClient) : Screen {
+    var censorClient = client
     @Composable
     override fun Content() = Scaffold {
         val nav = LocalNavigator.currentOrThrow
@@ -22,7 +24,7 @@ class HomeScreen : Screen {
                 Text("Home Screen")
             }
             Button(
-                onClick = { nav.push(MultiThreadingScreen()) }
+                onClick = { nav.push(MultiThreadingScreen(client = censorClient)) }
             ) {
                 Text("MultiThreading Screen")
             }
